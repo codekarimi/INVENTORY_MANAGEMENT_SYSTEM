@@ -33,42 +33,71 @@ The Inventory Management System is a web-based application that allows users to 
 - **Backend:** PHP, MySQL
 - **Frontend:** HTML, CSS, JavaScript
 - **Frameworks/Libraries:** Bootstrap, jQuery
-- **Tools:** Composer, phpMyAdmin
+- **Tools:** XAMPP, Composer, phpMyAdmin
 
 ## Installation
 
-To set up the Inventory Management System locally, follow these steps:
+To set up the Inventory Management System locally using XAMPP, follow these steps:
 
-1. **Clone the repository:**
+1. **Download and Install XAMPP:**
 
+    Download XAMPP from the [official website](https://www.apachefriends.org/index.html) and install it on your machine.
+
+2. **Clone the repository:**
+
+    Open your terminal and run:
+    
     ```bash
     git clone https://github.com/codekarimi/INVENTORY_MANAGEMENT_SYSTEM.git
-    cd inventory-management-system
+    cd inventory_management_system
     ```
 
-2. **Install dependencies:**
+3. **Move the project to XAMPP's `htdocs` directory:**
+
+    Move the `inventory-management-system` folder to `C:\xampp\htdocs\` (or the corresponding directory on your system).
+
+4. **Start Apache and MySQL:**
+
+    Open the XAMPP Control Panel and start the Apache and MySQL modules.
+
+5. **Set up the database:**
+
+    - Open your browser and go to `http://localhost/phpmyadmin`.
+    - Create a new database (e.g., `inventory_db`).
+    - Import the database schema (`database/schema.sql`) into your new database.
+
+6. **Configure the database connection:**
+
+    Open `config.php` in the `inventory-management-system` directory and update the database connection settings to match your local environment:
+    
+    ```php
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = ""; // typically the password is empty for the root user on XAMPP
+    $dbname = "inventory_db";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    ?>
+    ```
+
+7. **Install dependencies:**
+
+    If your project uses Composer for dependency management, run:
 
     ```bash
     composer install
     ```
 
-3. **Configure the database:**
+8. **Access the application:**
 
-    - Create a MySQL database.
-    - Import the database schema (`database/schema.sql`) into your MySQL server.
-    - Update the database connection settings in `config.php`.
-
-4. **Start the PHP built-in server:**
-
-    ```bash
-    php -S localhost:8000
-    ```
-
-5. **Open your browser and navigate to:**
-
-    ```plaintext
-    http://localhost:8000
-    ```
+    Open your browser and navigate to `http://localhost/inventory-management-system`.
 
 ## Usage
 
@@ -143,8 +172,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you have any questions or suggestions, feel free to contact me:
 
-- Email: [ckarimi676@gmail.com]
-- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- Twitter: [@yourhandle](https://twitter.com/yourhandle)
+- Email: [ckarimi@gmail.com](mailto:your-email@example.com)
+- LinkedIn: [codekarimi](https://linkedin.com/in/codekarimi)
+- Twitter: [@codekarimi](https://twitter.com/codekarimi)
 
 Thank you for visiting the Inventory Management System repository!
